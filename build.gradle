@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.2'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.uol.comp3011'
+version = '0.0.1-SNAPSHOT'
+description = 'Coursework 1 for COMP 3011'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(24)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation 'org.postgresql:postgresql'
+
+	// H2 database Integration Dependencies
+	implementation 'com.h2database:h2'
+	implementation 'org.flywaydb:flyway-core'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
