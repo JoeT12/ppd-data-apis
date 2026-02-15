@@ -41,6 +41,9 @@ dependencies {
 	implementation 'com.h2database:h2'
 	implementation 'org.flywaydb:flyway-core'
 
+	// Apache commons library for parsing CSV
+	implementation 'org.apache.commons:commons-csv:1.10.0'
+
 	// Test Dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
