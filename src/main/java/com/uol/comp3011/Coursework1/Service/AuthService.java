@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,12 +56,19 @@ public class AuthService {
 
   @Transactional
   public String login(NewUser user) throws Exception {
+    // Most code in this method was taken from the suggestion by ChatGPT when creating the Security
+    // package.
+    // Evidence of the original code provided in the response from ChatGPT can be found in the
+    // README.md in the security module.
     log.info("AuthService:login:: INFO - BEGIN");
     Authentication auth =
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-    UserDetails nuser = (UserDetails) auth.getPrincipal();
-    String token = jwtUtil.generateToken(nuser);
+    UserDetails userDetails = (UserDetails) auth.getPrincipal();
+    if (userDetails == null) {
+      throw new BadCredentialsException(null);
+    }
+    String token = jwtUtil.generateToken(userDetails);
     log.info("AuthService:login:: INFO - END");
     return token;
   }
