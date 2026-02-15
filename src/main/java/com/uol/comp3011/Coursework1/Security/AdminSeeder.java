@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("!test") // optional: don't run in tests
 public class AdminSeeder implements ApplicationRunner {
 
     private final UserRepository userRepo;
