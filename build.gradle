@@ -19,15 +19,17 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot Dependencies
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation "org.springframework.boot:spring-boot-starter-web"
-	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.boot:spring-boot-flyway'
 
-	// H2 database Integration Dependencies
+	// H2 database + Flyway Dependencies
 	implementation 'com.h2database:h2'
 	implementation 'org.flywaydb:flyway-core'
 
+	// Test Dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
