@@ -35,6 +35,7 @@ public class User {
   @Column(name = "updated_at")
   private Instant updatedAt;
 
+  // Many-to-many relationship between user and roles - join table required.
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "app_user_role",
@@ -42,6 +43,7 @@ public class User {
       inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<AppRole> roles = new HashSet<>();
 
+  // For debugging purposes.
   @Override
   public String toString() {
     var roleNames = roles.stream().map(AppRole::getName).toList();

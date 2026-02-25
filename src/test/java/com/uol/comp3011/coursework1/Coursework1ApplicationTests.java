@@ -8,4 +8,7 @@ class Coursework1ApplicationTests {
 
   @Test
   void contextLoads() {}
+
+  // Mock Test class created. With more time, full test suite could be
+  // developed here.
 }

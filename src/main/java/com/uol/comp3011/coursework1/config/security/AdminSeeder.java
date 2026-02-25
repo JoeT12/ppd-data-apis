@@ -8,14 +8,26 @@ import com.uol.comp3011.coursework1.dal.repository.RoleRepository;
 import com.uol.comp3011.coursework1.dal.repository.UserRepository;
 import com.uol.comp3011.coursework1.dal.entity.User;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/* This class will create an admin user on service start-up (if an admin doesn't already exist).
+
+  This method is not ideal for security, as it exposes the admin's details within the application
+  code. Ideal scenario would be to load the admin user directly into the database prior to service
+  startup - however this was not possible to due the black-box hashing implementation being used by
+  Spring.
+*/
+
 @Component
 public class AdminSeeder implements ApplicationRunner {
+
+  private static final Logger log = LoggerFactory.getLogger(AdminSeeder.class);
 
   private final UserRepository userRepo;
   private final RoleRepository roleRepo;
@@ -34,9 +46,15 @@ public class AdminSeeder implements ApplicationRunner {
     this.encoder = passwordEncoder;
   }
 
+  /**
+   * Creates an admin user.
+   *
+   * @param args incoming application arguments.
+   */
   @Override
   @Transactional
   public void run(ApplicationArguments args) {
+    log.info("Beginning Seed of Admin User with Email {}", adminEmail);
 
     User admin = userRepo.findByEmail(adminEmail);
     if (admin == null) {
@@ -46,9 +64,13 @@ public class AdminSeeder implements ApplicationRunner {
       admin.setPasswordHash(encoder.encode(adminPassword));
     }
 
+    // Give the user both USER and ADMIN roles.
     admin.getRoles().add(roleRepo.findByName("ROLE_USER"));
     admin.getRoles().add(roleRepo.findByName("ROLE_ADMIN"));
 
+    // Save the created admin user to the db.
     userRepo.save(admin);
+
+    log.info("Completed Seed of Admin User with Email {}", adminEmail);
   }
 }

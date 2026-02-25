@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '4.0.2'
+	id 'org.springframework.boot' version '4.0.2' // Spring Boot version.
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -10,12 +10,12 @@ description = 'Coursework 1 for COMP 3011'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(24)
+		languageVersion = JavaLanguageVersion.of(25) // Java Version 25.
 	}
 }
 
 repositories {
-	mavenCentral()
+	mavenCentral() // Tells Spring where to download dependencies from.
 }
 
 dependencies {
@@ -32,16 +32,18 @@ dependencies {
 	implementation "io.jsonwebtoken:jjwt-impl:0.12.5"
 	implementation "io.jsonwebtoken:jjwt-jackson:0.12.5"
 
-	// Lombok - used to reduce boiler plate code such as getters/setters.
-	// Use was based on my experience with this library while on industrial placement.
+	// Lombok (https://projectlombok.org/) - used to reduce boiler plate code such as getters/setters via annotations (@Getter/@Setter).
+	// Use of this was based on my experience with this library while on industrial placement.
 	compileOnly "org.projectlombok:lombok:1.18.42"
 	annotationProcessor "org.projectlombok:lombok:1.18.42"
 
-	// H2 database + Flyway Dependencies
+	// H2 database + Flyway Dependencies. Flyway used to migrate (and possibly create in-memory) database.
+	// Again, use of these was based on experience with these technologies on placement.
 	implementation 'com.h2database:h2'
 	implementation 'org.flywaydb:flyway-core'
 
-	// Apache commons library for parsing CSV
+	// Apache commons library for parsing CSV: (https://commons.apache.org/proper/commons-csv/).
+	// Use based again on personal experience with this tool.
 	implementation 'org.apache.commons:commons-csv:1.10.0'
 
 	// Test Dependencies

@@ -8,8 +8,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class SecurityUtils {
+  // Private constructor as it is a utility class. Prevents instantiation.
   private SecurityUtils() {}
 
+  /**
+   * Extracts the username from a JWT token.
+   *
+   * @return The username (email) of the owner of the JWT.
+   */
   public static String getCurrentUsername() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -17,6 +23,6 @@ public class SecurityUtils {
       return null;
     }
 
-    return authentication.getName(); // usually username/email
+    return authentication.getName();
   }
 }

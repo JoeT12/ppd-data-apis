@@ -21,16 +21,30 @@ public class DBUserDetailsService implements UserDetailsService {
     this.userRepo = userRepo;
   }
 
+  /**
+   * Loads a user from the database and returns their details.
+   *
+   * <p>NOTE: Due to this method being overridden from the base UserDetailsService class, we cannot
+   * change its name. This is required in our case as our application does not store usernames, only
+   * emails. Hence, a more fitting name would have been instead - loadUserByEmail.
+   *
+   * @param email The users email.
+   * @return The details of the user.
+   * @throws UsernameNotFoundException If the user cannot be found.
+   */
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepo.findByEmail(username);
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    // Attempt to load user from the database, throw error if user cannot be found.
+    User user = userRepo.findByEmail(email);
     if (user == null) {
-      throw new UsernameNotFoundException("User not found: " + username);
+      throw new UsernameNotFoundException("User not found: " + email);
     }
 
+    // Get the application roles for loaded user.
     var authorities =
         user.getRoles().stream().map(r -> new SimpleGrantedAuthority(r.getName())).toList();
 
+    // Build and return UserDetails object from the details obtained from the db.
     return org.springframework.security.core.userdetails.User.builder()
         .username(user.getEmail())
         .password(user.getPasswordHash())

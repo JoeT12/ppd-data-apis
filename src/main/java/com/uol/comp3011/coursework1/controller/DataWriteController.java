@@ -1,5 +1,6 @@
 package com.uol.comp3011.coursework1.controller;
 
+import com.uol.comp3011.coursework1.dal.entity.PropertyTransaction;
 import com.uol.comp3011.coursework1.dto.response.MessageResponse;
 import com.uol.comp3011.coursework1.service.DataWriteService;
 import org.springframework.http.HttpStatus;
@@ -22,10 +23,10 @@ public class DataWriteController {
   }
 
   @PreAuthorize("hasRole('ADMIN')")
-  @PostMapping("/admin/uploadYearlyData")
-  public ResponseEntity<MessageResponse> uploadData(@RequestParam("file") MultipartFile file) {
+  @PostMapping("/admin/upload-ppd-year")
+  public ResponseEntity<MessageResponse> uploadPpdYear(@RequestParam("file") MultipartFile file) {
     try {
-      // Integrity checks
+      // Validate request
       if (!Objects.requireNonNull(file.getOriginalFilename()).endsWith(".csv")) {
         throw new ResponseStatusException(
             HttpStatus.BAD_REQUEST, "The file sent to the server was not in CSV format");
@@ -33,46 +34,45 @@ public class DataWriteController {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Empty file sent to server!");
       }
 
-      dataWriteService.writeYearlyPpdFile(file.getInputStream());
+      dataWriteService.uploadPpdYear(file.getInputStream());
       return ResponseEntity.ok().body(new MessageResponse("File upload succeeded"));
     } catch (Exception error) {
-      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, error.getMessage());
+      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Could not write PPD data to the database - view service logs for further details");
     }
   }
 
   @PreAuthorize("hasRole('ADMIN')")
-  @DeleteMapping("/admin/deleteDataRecord")
-  public ResponseEntity<MessageResponse> deletePpdDataRecord(
+  @DeleteMapping("/admin/delete-ppd-record")
+  public ResponseEntity<MessageResponse> deletePpdRecord(
       @RequestParam("transaction_id") String transactionId) {
     try {
-      // Integrity checks
+      // Validate request
       if (transactionId == null || transactionId.isBlank()) {
         throw new ResponseStatusException(
             HttpStatus.BAD_REQUEST, "transaction_id missing from request");
       }
 
-      dataWriteService.deletePpdDataRecord(transactionId);
+      dataWriteService.deletePpdRecord(transactionId);
       return ResponseEntity.ok().body(new MessageResponse("Data record deleted successfully"));
     } catch (Exception error) {
       throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, error.getMessage());
     }
   }
 
-  //  @PreAuthorize("hasRole('ADMIN')")
-  //  @PutMapping("/admin/updateDataRecord")
-  //  public ResponseEntity<?> amendPpdDataRecord(@RequestParam("transaction_id") String
-  // transactionId) {
-  //    try {
-  //      // Integrity checks
-  //      if (transactionId == null || transactionId.isBlank()) {
-  //        return ResponseEntity.badRequest()
-  //                .body("transaction_id missing from request");
-  //      }
-  //
-  //      dataWriteService.amendPpdDataRecord(transactionId);
-  //      return ResponseEntity.ok().body("Data record deleted successfully");
-  //    } catch (Exception e) {
-  //      return ResponseEntity.internalServerError().body(e.getMessage());
-  //    }
-  //  }
+  @PreAuthorize("hasRole('ADMIN')")
+  @PutMapping("/admin/update-ppd-record")
+  public ResponseEntity<MessageResponse> updatePpdRecord(
+      @RequestBody PropertyTransaction updatedRecord) {
+    try {
+      // Validate request
+      if (updatedRecord == null) {
+        return ResponseEntity.badRequest().body(new MessageResponse("Missing Request Body"));
+      }
+
+      dataWriteService.updatePpdRecord(updatedRecord);
+      return ResponseEntity.ok().body(new MessageResponse("Data record updated successfully"));
+    } catch (Exception error) {
+      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, error.getMessage());
+    }
+  }
 }

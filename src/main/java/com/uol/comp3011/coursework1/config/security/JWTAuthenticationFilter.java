@@ -4,6 +4,7 @@
 
 package com.uol.comp3011.coursework1.config.security;
 
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,20 +32,38 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     this.userDetailsService = userDetailsService;
   }
 
+  /**
+   * Filters incoming requests for a JWT token, and validates before allowing the application to
+   * send a response.
+   *
+   * @param request A HTTP request.
+   * @param response A HTTP response.
+   * @param filterChain A filterChain object.
+   * @throws UsernameNotFoundException If the user doesn't exist.
+   * @throws JwtException If error occurs while validating JWT.
+   * @throws ServletException For issues when passing request to next filter in the chain.
+   * @throws IOException For issues when passing request to next filter in the chain.
+   */
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-      throws ServletException, IOException {
+      throws UsernameNotFoundException, JwtException, ServletException, IOException {
 
+    // Get request header.
     String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
+      // Extract bearer token.
       String token = authHeader.substring(7);
 
       if (jwtUtil.isValid(token)
           && SecurityContextHolder.getContext().getAuthentication() == null) {
-        String username = jwtUtil.getUsername(token);
+        /* If token valid and application security context available, then
+          get the users details from the token and set the authentication context
+          for the request.
+        */
 
+        String username = jwtUtil.getUsername(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
         UsernamePasswordAuthenticationToken authentication =
@@ -51,11 +71,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 userDetails, null, userDetails.getAuthorities());
 
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
       }
     }
 
+    // Pass request to next filter in the chain.
     filterChain.doFilter(request, response);
   }
 }

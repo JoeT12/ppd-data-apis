@@ -10,19 +10,12 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
-/* Explanation of annotations:
-   - @Getter/@Setter tell lombok to automatically create the getters/setters for us, which makes code more readable.
-   - @NoArgsConstructor tells lombok to create a constructor for the class with no arguments.
-   - @Entity tells JPA that this class maps to a database record.
-   - @Table tells JPA which database table this class maps to.
-*/
-
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "ppd_transaction")
-public class PpdDataRecord {
+public class PropertyTransaction {
 
   /* - @Id Tells JPA that this column is going to be the primary key of the table.
      - @GeneratedValue(strategy = GenerationType.IDENTITY) Tells JPA that we are automatically generating the id in the database,

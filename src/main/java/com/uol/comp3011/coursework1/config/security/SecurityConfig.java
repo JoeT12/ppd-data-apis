@@ -23,6 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
 
+  // Security configuration for request filtering.
   @Bean
   public SecurityFilterChain securityFilterChain(
       HttpSecurity http, JWTAuthenticationFilter jwtFilter) {
@@ -30,22 +31,26 @@ public class SecurityConfig {
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             auth ->
+                // Allow unauthorised requests only to auth / health APIs.
                 auth.requestMatchers("/api/v1/auth/**")
                     .permitAll()
                     .requestMatchers(HttpMethod.GET, "/health")
                     .permitAll()
                     .anyRequest()
                     .authenticated())
+        // Add our custom JWT filter to handle authentication.
         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
   }
 
+  // Application configuration for the bcrypt password encoder (hashing).
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
+  // Application configuration for the spring authentication manager.
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config) {
     return config.getAuthenticationManager();

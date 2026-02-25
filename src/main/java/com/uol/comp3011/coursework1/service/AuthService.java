@@ -42,25 +42,49 @@ public class AuthService {
     this.jwtUtil = jwtUtil;
   }
 
+  /**
+   * Creates a user account.
+   *
+   * @param user A user requesting account creation.
+   * @throws Exception If duplicate account creation attempted or an error occurred while saving
+   *     user to the database.
+   */
   @Transactional
-  public void createAccount(UserRequest user) {
+  public void createAccount(UserRequest user) throws Exception {
     log.info("Beginning Account Creation for User {}", user.email());
+
+    if (userRepo.findByEmail(user.email()) != null) {
+      // Check for the user already existing, catching here allows us to throw
+      // a more meaningful error message - and not a database stack trace.
+      throw new Exception("User Already Exists With This Email");
+    }
+
+    // Create new user and save to db. All new users created with role USER.
     User newUser = new User();
     newUser.setEmail(user.email());
     newUser.setPasswordHash(encoder.encode(user.password()));
     newUser.setRoles(Set.of(roleRepo.findByName("ROLE_USER")));
     newUser.setUpdatedAt(Instant.now());
     userRepo.save(newUser);
+
     log.info("Completed Account Creation for User {}", user.email());
   }
 
-  @Transactional
-  public String login(UserRequest user) {
+  /**
+   * After authenticating the users credentials, this function provides a time-limited JWT token
+   * affording the user access to the protected API's.
+   *
+   * @param user A user requesting service 'log in'.
+   * @return A time-limited JWT token if the user can be authenticated.
+   * @throws BadCredentialsException If the provided user details are invalid.
+   */
+  public String login(UserRequest user) throws BadCredentialsException {
     // Most code in this method was taken from the suggestion by ChatGPT when creating the Security
-    // package.
-    // Evidence of the original code provided in the response from ChatGPT can be found in the
-    // AI_ACKNOWLEDGMENT.md in the security module.
+    // package. Evidence of the original code provided in the response from ChatGPT can be found in
+    // the AI_ACKNOWLEDGMENT.md in the security module.
     log.info("Beginning User Login for User {}", user.email());
+
+    // Validate user credentials.
     Authentication auth =
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(user.email(), user.password()));
@@ -68,7 +92,11 @@ public class AuthService {
     if (userDetails == null) {
       throw new BadCredentialsException(null);
     }
+
+    // If user credentials valid, create JWT token and return to the user.
     String token = jwtUtil.generateToken(userDetails);
+
+    // Return token.
     log.info("User Login Complete for User {}", user.email());
     return token;
   }

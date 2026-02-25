@@ -35,6 +35,12 @@ public class JWTUtils {
     this.expirationMinutes = expirationMinutes;
   }
 
+  /**
+   * Generates a JWT token for a user.
+   *
+   * @param user A user.
+   * @return A JWT token.
+   */
   public String generateToken(UserDetails user) {
     Instant now = Instant.now();
     Instant exp = now.plus(expirationMinutes, ChronoUnit.MINUTES);
@@ -52,6 +58,12 @@ public class JWTUtils {
         .compact();
   }
 
+  /**
+   * Determines whether a given JWT token is valid.
+   *
+   * @param token A JWT token
+   * @return true if token valid, false otherwise.
+   */
   public boolean isValid(String token) {
     try {
       parseClaims(token);
@@ -61,11 +73,22 @@ public class JWTUtils {
     }
   }
 
+  /**
+   * Extracts the username from a given JWT token.
+   *
+   * @param token A JWT token.
+   * @return The username (email) of the user.
+   */
   public String getUsername(String token) {
     return parseClaims(token).getSubject();
   }
 
-  @SuppressWarnings("unchecked")
+  /**
+   * Extracts user roles from a JWT token.
+   *
+   * @param token A JWT token.
+   * @return The roles of the user, as a string list.
+   */
   public List<String> getRoles(String token) {
     Object roles = parseClaims(token).get("roles");
     if (roles instanceof List<?> list) {
@@ -74,6 +97,12 @@ public class JWTUtils {
     return List.of();
   }
 
+  /**
+   * Parses the claims for a given JWT token.
+   *
+   * @param token A JWT token.
+   * @return The claims of the given token.
+   */
   private Claims parseClaims(String token) {
     return Jwts.parser()
         .verifyWith(key)

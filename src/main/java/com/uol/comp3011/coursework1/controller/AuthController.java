@@ -19,9 +19,10 @@ public class AuthController {
     this.authService = authService;
   }
 
-  @PostMapping("/createAccount")
+  @PostMapping("/create-account")
   public ResponseEntity<MessageResponse> createAccount(@RequestBody UserRequest newUser) {
-    if(newUser.email().isBlank() || newUser.password().isBlank()){
+    if (newUser.email().isBlank() || newUser.password().isBlank()) {
+      // Validate request
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No Email or Password Provided");
     }
 
@@ -36,6 +37,11 @@ public class AuthController {
 
   @PostMapping("/login")
   public ResponseEntity<LoginResponse> login(@RequestBody UserRequest newUser) {
+    if (newUser.email().isBlank() || newUser.password().isBlank()) {
+      // Validate request
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No Email or Password Provided");
+    }
+
     try {
       String token = authService.login(newUser);
       return ResponseEntity.ok().body(new LoginResponse(token));
