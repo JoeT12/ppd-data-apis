@@ -59,6 +59,10 @@ public class DataReadService {
     }
 
     if (results == null || results.isEmpty()) {
+      log.info(
+              "Retrieval Completed for Towns With The Lowest Average Property Price Between Dates {} and {} - No Results Returned",
+              from,
+              to);
       throw new SQLException("Query returned no results");
     }
 
@@ -81,6 +85,7 @@ public class DataReadService {
     AvgPrice avg = ppd.averagePriceByPostcode(postcode);
 
     if (avg.numSales() == 0) {
+      log.info("Completed Retrieval of Average Property Price in Postcode {} - No Results Returned", postcode);
       throw new SQLException("Query Returned No Results");
     }
 
@@ -99,6 +104,7 @@ public class DataReadService {
     List<Integer> yearsAvailable = ppd.getAvailableYears();
 
     if (yearsAvailable == null || yearsAvailable.isEmpty()) {
+      log.info("Completed Retrieval of PPD Years Imported - No Records Returned");
       throw new SQLException("No Data In Database");
     }
 
@@ -122,6 +128,10 @@ public class DataReadService {
     AvgPrice avg = ppd.averagePriceByPropertyType(townCity, propertyType);
 
     if (avg.numSales() == 0) {
+      log.info(
+              "Completed Retrieval of Average Property Price for Type {} in Town/City {} - No Results Returned",
+              propertyType,
+              townCity);
       throw new SQLException("Query returned no results");
     }
 
@@ -144,6 +154,7 @@ public class DataReadService {
     PropertyTransaction ppdRecord = ppd.findByTransactionUuid(UUID.fromString(transactionId));
 
     if (ppdRecord == null) {
+      log.info("Completed Retrieval of PPD Record {} - No Record Returned", transactionId);
       throw new SQLException("Record could not be found");
     }
 
@@ -167,6 +178,7 @@ public class DataReadService {
     List<PropertyTransaction> results =
         ppd.findAll(PageRequest.of(pageNum, sanitisedPageSize)).stream().toList();
     if (results.isEmpty()) {
+      log.info("Completed Retrieval of PPD Page {}, Page Size = {} - No Records returned", pageNum, pageSize);
       throw new SQLException("No records could not be found");
     }
 

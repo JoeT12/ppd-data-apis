@@ -56,6 +56,7 @@ public class AuthService {
     if (userRepo.findByEmail(user.email()) != null) {
       // Check for the user already existing, catching here allows us to throw
       // a more meaningful error message - and not a database stack trace.
+      log.info("Completed Account Creation - User Already Exists");
       throw new Exception("User Already Exists With This Email");
     }
 
@@ -90,6 +91,7 @@ public class AuthService {
             new UsernamePasswordAuthenticationToken(user.email(), user.password()));
     UserDetails userDetails = (UserDetails) auth.getPrincipal();
     if (userDetails == null) {
+      log.info("User Login Complete - Bad Credentials");
       throw new BadCredentialsException(null);
     }
 
