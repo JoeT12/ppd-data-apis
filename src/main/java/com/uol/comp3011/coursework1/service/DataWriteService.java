@@ -3,7 +3,6 @@ package com.uol.comp3011.coursework1.service;
 import com.uol.comp3011.coursework1.dal.entity.PropertyTransaction;
 import com.uol.comp3011.coursework1.dal.repository.PropertyTransactionRepository;
 
-import com.uol.comp3011.coursework1.config.security.SecurityUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,7 @@ public class DataWriteService {
    */
   @Transactional
   public void uploadPpdYear(InputStream file) throws Exception {
-    log.info("Beginning PPD Upload for User {}", SecurityUtils.getCurrentUsername());
+    log.info("Beginning PPD Upload");
 
     Reader fileReader = new InputStreamReader(file);
     Iterable<CSVRecord> records = CSVFormat.DEFAULT.builder().build().parse(fileReader);
@@ -98,7 +97,7 @@ public class DataWriteService {
       buffer.clear();
     }
 
-    log.info("Completed PPD Upload for User {}", SecurityUtils.getCurrentUsername());
+    log.info("Completed PPD Upload");
   }
 
   /**
@@ -109,20 +108,14 @@ public class DataWriteService {
    */
   @Transactional
   public void deletePpdRecord(String transactionId) {
-    log.info(
-        "Beginning Deletion of PPD Record {} for User {}",
-        transactionId,
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Deletion of PPD Record {}", transactionId);
 
     // Find record and delete.
     PropertyTransaction dataRecordToDelete =
         ppd.findByTransactionUuid(UUID.fromString(transactionId));
     ppd.delete(dataRecordToDelete);
 
-    log.info(
-        "Completed Deletion of PPD Record {} for User {}",
-        transactionId,
-        SecurityUtils.getCurrentUsername());
+    log.info("Completed Deletion of PPD Record {}", transactionId);
   }
 
   /**
@@ -133,10 +126,7 @@ public class DataWriteService {
    */
   @Transactional
   public void updatePpdRecord(PropertyTransaction ppdRecord) {
-    log.info(
-        "Beginning Update of PPD Record {} for User {}",
-        ppdRecord.getTransactionUuid(),
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Update of PPD Record {}", ppdRecord.getTransactionUuid());
 
     // Find record and update.
     PropertyTransaction recordToUpdate = ppd.findByTransactionUuid(ppdRecord.getTransactionUuid());
@@ -156,9 +146,6 @@ public class DataWriteService {
     recordToUpdate.setPpdCategoryCode(ppdRecord.getPpdCategoryCode());
     ppd.save(recordToUpdate);
 
-    log.info(
-        "Completed Update of PPD Record {} for User {}",
-            ppdRecord.getTransactionUuid(),
-        SecurityUtils.getCurrentUsername());
+    log.info("Completed Update of PPD Record {}", ppdRecord.getTransactionUuid());
   }
 }

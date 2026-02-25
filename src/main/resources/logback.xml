@@ -9,7 +9,7 @@
     <springProperty scope="context" name="LOG_PATH" source="logging.file.path"/>
 
     <property name="LOG_PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %cyan(%class{36})::%magenta(%method): Line:%line - %msg%n"/>
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %cyan(%class{36})::%magenta(%method): caller=[%X{username}] - %msg%n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

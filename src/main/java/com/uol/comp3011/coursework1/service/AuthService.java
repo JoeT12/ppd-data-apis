@@ -51,7 +51,7 @@ public class AuthService {
    */
   @Transactional
   public void createAccount(UserRequest user) throws Exception {
-    log.info("Beginning Account Creation for User {}", user.email());
+    log.info("Beginning Account Creation");
 
     if (userRepo.findByEmail(user.email()) != null) {
       // Check for the user already existing, catching here allows us to throw
@@ -67,7 +67,7 @@ public class AuthService {
     newUser.setUpdatedAt(Instant.now());
     userRepo.save(newUser);
 
-    log.info("Completed Account Creation for User {}", user.email());
+    log.info("Completed Account Creation");
   }
 
   /**
@@ -82,7 +82,7 @@ public class AuthService {
     // Most code in this method was taken from the suggestion by ChatGPT when creating the Security
     // package. Evidence of the original code provided in the response from ChatGPT can be found in
     // the AI_ACKNOWLEDGMENT.md in the security module.
-    log.info("Beginning User Login for User {}", user.email());
+    log.info("Beginning User Login");
 
     // Validate user credentials.
     Authentication auth =
@@ -97,7 +97,7 @@ public class AuthService {
     String token = jwtUtil.generateToken(userDetails);
 
     // Return token.
-    log.info("User Login Complete for User {}", user.email());
+    log.info("User Login Complete");
     return token;
   }
 }

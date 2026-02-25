@@ -9,6 +9,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.MDC;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -72,10 +73,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        // Add username to the log field for security (traceability).
+        MDC.put("username", userDetails.getUsername());
       }
     }
 
     // Pass request to next filter in the chain.
     filterChain.doFilter(request, response);
+    // Clear the username field added to the log.
+    MDC.clear();
   }
 }

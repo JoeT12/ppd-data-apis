@@ -1,6 +1,5 @@
 package com.uol.comp3011.coursework1.service;
 
-import com.uol.comp3011.coursework1.config.security.SecurityUtils;
 import com.uol.comp3011.coursework1.dal.entity.PropertyTransaction;
 import com.uol.comp3011.coursework1.dal.repository.PropertyTransactionRepository.AvgPricePerTown;
 import com.uol.comp3011.coursework1.dal.repository.PropertyTransactionRepository;
@@ -39,10 +38,9 @@ public class DataReadService {
   public List<AvgPricePerTown> getCheapestLocations(LocalDate from, LocalDate to, Integer limit)
       throws SQLException {
     log.info(
-        "Beginning Retrieval of Towns with the Lowest Average Property Price Between Dates {} and {} for User {}",
+        "Beginning Retrieval of Towns with the Lowest Average Property Price Between Dates {} and {}",
         from,
-        to,
-        SecurityUtils.getCurrentUsername());
+        to);
 
     // Sanitise the (optionally) passed limit to ensure it within allowed limits.
     // If it is not passed, then we just default the value to the max limit.
@@ -65,10 +63,9 @@ public class DataReadService {
     }
 
     log.info(
-        "Retrieval Completed for Towns With The Lowest Average Property Price Between Dates {} and {} for User {}",
+        "Retrieval Completed for Towns With The Lowest Average Property Price Between Dates {} and {}",
         from,
-        to,
-        SecurityUtils.getCurrentUsername());
+        to);
     return results;
   }
 
@@ -79,10 +76,7 @@ public class DataReadService {
    * @return The average house price in a given postcode area.
    */
   public AvgPrice getAveragePriceByPostcode(String postcode) throws SQLException {
-    log.info(
-        "Beginning Retrieval of Average Property Price in Postcode {} for User {}",
-        postcode,
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Retrieval of Average Property Price in Postcode {}", postcode);
 
     AvgPrice avg = ppd.averagePriceByPostcode(postcode);
 
@@ -90,10 +84,7 @@ public class DataReadService {
       throw new SQLException("Query Returned No Results");
     }
 
-    log.info(
-        "Completed Retrieval of Average Property Price in Postcode {} for User {}",
-        postcode,
-        SecurityUtils.getCurrentUsername());
+    log.info("Completed Retrieval of Average Property Price in Postcode {}", postcode);
     return avg;
   }
 
@@ -104,19 +95,14 @@ public class DataReadService {
    * @return A list of years for which yearly PPD data has been imported.
    */
   public List<Integer> getPpdYearsAvailable() throws SQLException {
-    log.info(
-        "Beginning Retrieval of PPD Years Imported for User {}",
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Retrieval of PPD Years Imported");
     List<Integer> yearsAvailable = ppd.getAvailableYears();
 
     if (yearsAvailable == null || yearsAvailable.isEmpty()) {
       throw new SQLException("No Data In Database");
     }
 
-    log.info(
-        "Completed Retrieval of PPD Years Imported for User {}",
-        SecurityUtils.getCurrentUsername());
-
+    log.info("Completed Retrieval of PPD Years Imported");
     return yearsAvailable;
   }
 
@@ -130,10 +116,9 @@ public class DataReadService {
   public AvgPrice getAveragePriceByPropertyType(String townCity, Character propertyType)
       throws SQLException {
     log.info(
-        "Beginning Retrieval of Average Property Price for Type {} in Town/City {} for User {}",
+        "Beginning Retrieval of Average Property Price for Type {} in Town/City {}",
         propertyType,
-        townCity,
-        SecurityUtils.getCurrentUsername());
+        townCity);
     AvgPrice avg = ppd.averagePriceByPropertyType(townCity, propertyType);
 
     if (avg.numSales() == 0) {
@@ -141,10 +126,9 @@ public class DataReadService {
     }
 
     log.info(
-        "Completed Retrieval of Average Property Price for Type {} in Town/City {} for User {}",
+        "Completed Retrieval of Average Property Price for Type {} in Town/City {}",
         propertyType,
-        townCity,
-        SecurityUtils.getCurrentUsername());
+        townCity);
 
     return avg;
   }
@@ -156,20 +140,14 @@ public class DataReadService {
    * @return The retrieved record.
    */
   public PropertyTransaction getSingleRecord(String transactionId) throws SQLException {
-    log.info(
-        "Beginning Retrieval of PPD Record {} for User {}",
-        transactionId,
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Retrieval of PPD Record {}", transactionId);
     PropertyTransaction ppdRecord = ppd.findByTransactionUuid(UUID.fromString(transactionId));
 
     if (ppdRecord == null) {
       throw new SQLException("Record could not be found");
     }
 
-    log.info(
-        "Completed Retrieval of PPD Record {} for User {}",
-        transactionId,
-        SecurityUtils.getCurrentUsername());
+    log.info("Completed Retrieval of PPD Record {}", transactionId);
     return ppdRecord;
   }
 
@@ -182,11 +160,7 @@ public class DataReadService {
    * @return The page of PPD data items (streamed as a list).
    */
   public List<PropertyTransaction> getAllRecords(int pageNum, int pageSize) throws SQLException {
-    log.info(
-        "Beginning Retrieval of PPD Page {}, Page Size = {} for User {}",
-        pageNum,
-        pageSize,
-        SecurityUtils.getCurrentUsername());
+    log.info("Beginning Retrieval of PPD Page {}, Page Size = {}", pageNum, pageSize);
 
     int sanitisedPageSize = sanitiseResponseRowCount(pageSize);
 
@@ -196,11 +170,7 @@ public class DataReadService {
       throw new SQLException("No records could not be found");
     }
 
-    log.info(
-        "Completed Retrieval of PPD Page {}, Page Size = {} for User {}",
-        pageNum,
-        pageSize,
-        SecurityUtils.getCurrentUsername());
+    log.info("Completed Retrieval of PPD Page {}, Page Size = {}", pageNum, pageSize);
     return results;
   }
 
@@ -220,10 +190,7 @@ public class DataReadService {
       if (rowCount != null && RESPONSE_MAX_ROWS > rowCount) {
         // If above the limit, log so service log observers can determine whether the hard limit
         // needs raising.
-        log.error(
-            "Maximum Row Retrieval Limit Exceeded with Limit {} by User {}",
-            rowCount,
-            SecurityUtils.getCurrentUsername());
+        log.error("Maximum Row Retrieval Limit Exceeded with Limit {}", rowCount);
       }
       // If outside allowed limits, then set the limit to max limit.
       sanitisedRowCount = RESPONSE_MAX_ROWS;
