@@ -1,0 +1,2394 @@
+{
+  "info": {
+    "_postman_id": "23a706e5-afa4-4d9f-85ba-087994cc846e",
+    "name": "COMP3011-CWK1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51986844",
+    "_collection_link": "https://go.postman.co/collection/51986844-23a706e5-afa4-4d9f-85ba-087994cc846e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Provides capabilities to log a given user into COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"admin@example.com\",\n    \"password\" : \"admin\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:09:57 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"bearerToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0Mjk5NywiZXhwIjoxNzcyMDQ2NTk3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.8VNrEpVUega2ttLGzsAUczX0HY7u4778XovXRbykYEs\"\n}"
+            },
+            {
+              "name": "400 Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"admin@example.com\",\n    \"password\" : \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:10:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: No Email or Password Provided\",\n    \"Error Code\": 400\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Account",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\" : \"\",\n    \"password\" : \"pass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/create-account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "create-account"
+              ]
+            },
+            "description": "Provides capabilities for a new user of COMP3011-CWK1 REST API web service to create a new account"
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"ed20jwt2@leeds.ac.uk\",\n    \"password\" : \"pass\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/create-account",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "create-account"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 12:43:55 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Account Created Successfully\"\n}"
+            },
+            {
+              "name": "500 Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"ed20jwt2@leeds.ac.uk\",\n    \"password\" : \"pass\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/create-account",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "create-account"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:10:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+            },
+            {
+              "name": "400 Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"\",\n    \"password\" : \"pass\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/create-account",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "create-account"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:10:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: No Email or Password Provided\",\n    \"Error Code\": 400\n}"
+            }
+          ]
+        }
+      ],
+      "description": "Contains all API requests for authenticating to COMP3011-CWK1 REST API service."
+    },
+    {
+      "name": "Data",
+      "item": [
+        {
+          "name": "Admin",
+          "item": [
+            {
+              "name": "Upload PPD (Year)",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "description": "A CSV file containing the yearly PPD data. Such files can be found here: can be found here: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads.",
+                      "type": "file",
+                      "uuid": "62cf712c-784e-4d19-b39e-3bf43e68d16a",
+                      "src": "/Users/josephtaylor/Downloads/pp-2025.csv"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/write/admin/upload-ppd-year",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "write",
+                    "admin",
+                    "upload-ppd-year"
+                  ]
+                },
+                "description": "Uploads a PPD Year document to the COMP3011-CWK1 REST API web service. The yearly datasets that can be uploaded to this endpoint can be found here: [https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads](https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads)."
+              },
+              "response": [
+                {
+                  "name": "200 Ok",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "type": "file",
+                          "uuid": "62cf712c-784e-4d19-b39e-3bf43e68d16a",
+                          "src": "/Users/josephtaylor/Downloads/pp-2025.csv"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/upload-ppd-year",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "upload-ppd-year"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 24 Feb 2026 22:28:46 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"File upload succeeded\"\n}"
+                },
+                {
+                  "name": "500 Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "type": "file",
+                          "uuid": "62cf712c-784e-4d19-b39e-3bf43e68d16a",
+                          "src": "/Users/josephtaylor/Downloads/pp-2025.csv"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/upload-ppd-year",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "upload-ppd-year"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 25 Feb 2026 18:33:51 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+                }
+              ]
+            },
+            {
+              "name": "Delete PPD Transaction",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/write/admin/delete-ppd-record?transaction_id=2f7f2b43-2631-e08f-e063-4804a8c05a49",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "write",
+                    "admin",
+                    "delete-ppd-record"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "2f7f2b43-2631-e08f-e063-4804a8c05a49",
+                      "description": "The UUID of the PPD transaction you wish to delete."
+                    }
+                  ]
+                },
+                "description": "Deletes a PPD transaction with a given ID from the COMP3011-CWK1 REST API web service."
+              },
+              "response": [
+                {
+                  "name": "200 Ok",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/delete-ppd-record?transaction_id=2f7f2b43-2631-e08f-e063-4804a8c05a49",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "delete-ppd-record"
+                      ],
+                      "query": [
+                        {
+                          "key": "transaction_id",
+                          "value": "2f7f2b43-2631-e08f-e063-4804a8c05a49"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 25 Feb 2026 18:34:48 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"Data record deleted successfully\"\n}"
+                },
+                {
+                  "name": "500 Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/delete-ppd-record?transaction_id=44F406B7-3033-1095-E063-4704A8C048D4",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "delete-ppd-record"
+                      ],
+                      "query": [
+                        {
+                          "key": "transaction_id",
+                          "value": "44F406B7-3033-1095-E063-4704A8C048D4"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 25 Feb 2026 18:34:18 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+                }
+              ]
+            },
+            {
+              "name": "Update PPD Transaction",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"county\": \"GREATER LONDON\",\n    \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n    \"district\": \"HACKNEY\",\n    \"durationCode\": \"L\",\n    \"id\": 19,\n    \"locality\": \"\",\n    \"oldNewCode\": \"N\",\n    \"paon\": \"CHARNWOOD HOUSE\",\n    \"postcode\": \"E5 8SN\",\n    \"ppdCategoryCode\": \"B\",\n    \"price\": 255000,\n    \"propertyTypeCode\": \"F\",\n    \"recordStatusCode\": null,\n    \"saon\": \"FLAT 3\",\n    \"street\": \"CHARNWOOD STREET\",\n    \"townCity\": \"LONDON\",\n    \"transactionUuid\": \"44f406b7-304a-1095-e063-4704a8c048d4\",\n    \"transferDate\": \"2025-02-14\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/write/admin/update-ppd-record",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "write",
+                    "admin",
+                    "update-ppd-record"
+                  ]
+                },
+                "description": "Updates a given PPD transaction from the COMP3011-CWK1 REST API web service."
+              },
+              "response": [
+                {
+                  "name": "200 Ok",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"county\": \"GREATER LONDON\",\n    \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n    \"district\": \"HACKNEY\",\n    \"durationCode\": \"L\",\n    \"id\": 19,\n    \"locality\": \"\",\n    \"oldNewCode\": \"N\",\n    \"paon\": \"CHARNWOOD HOUSE\",\n    \"postcode\": \"E5 8SN\",\n    \"ppdCategoryCode\": \"B\",\n    \"price\": 255000,\n    \"propertyTypeCode\": \"F\",\n    \"recordStatusCode\": null,\n    \"saon\": \"FLAT 3\",\n    \"street\": \"CHARNWOOD STREET\",\n    \"townCity\": \"LONDON\",\n    \"transactionUuid\": \"44f406b7-304a-1095-e063-4704a8c048d4\",\n    \"transferDate\": \"2025-02-14\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/update-ppd-record",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "update-ppd-record"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 25 Feb 2026 18:37:00 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"message\": \"Data record updated successfully\"\n}"
+                },
+                {
+                  "name": "500 Error",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"county\": \"GREATER LONDON\",\n    \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n    \"district\": \"HACKNEY\",\n    \"durationCode\": \"L\",\n    \"id\": 19,\n    \"locality\": \"\",\n    \"oldNewCode\": \"N\",\n    \"paon\": \"CHARNWOOD HOUSE\",\n    \"postcode\": \"E5 8SN\",\n    \"ppdCategoryCode\": \"B\",\n    \"propertyTypeCode\": \"F\",\n    \"recordStatusCode\": null,\n    \"saon\": \"FLAT 3\",\n    \"street\": \"CHARNWOOD STREET\",\n    \"townCity\": \"LONDON\",\n    \"transactionUuid\": \"44f406b7-304a-1095-e063-4704a8c048d4\",\n    \"transferDate\": \"2025-02-14\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/write/admin/update-ppd-record",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "write",
+                        "admin",
+                        "update-ppd-record"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Wed, 25 Feb 2026 18:36:51 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+                }
+              ]
+            }
+          ],
+          "description": "Contains requests that only the admin user of the COMP3011-CWK1 REST API web service can invoke."
+        },
+        {
+          "name": "Cheapest Average Property Locations",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3Mjg4ODU2OCwiZXhwIjoxNzcyODkyMTY4LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.J3gUJlzA0G9xyRjNal34W7ne7C-tETFAOZo6UNh23ZU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/analytics/cheapest-locations?from=2025-01-20&limit=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "analytics",
+                "cheapest-locations"
+              ],
+              "query": [
+                {
+                  "key": "to",
+                  "value": "2025-08-20",
+                  "description": "The date to start the query in the data from, in the format YEAR-MONTH-DAY (e.g., 2025-08-20).",
+                  "disabled": true
+                },
+                {
+                  "key": "from",
+                  "value": "2025-01-20",
+                  "description": "The date to end the query in the data from, in the format YEAR-MONTH-DAY (e.g., 2025-08-20)."
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of results to return."
+                }
+              ]
+            },
+            "description": "Returns the top (limit) UK locations with the cheapest property data on average from the COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/cheapest-locations?from=2025-01-20&limit=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "cheapest-locations"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "2025-08-20",
+                      "description": "The date to start the query in the data from, in the format YEAR-MONTH-DAY (e.g., 2025-08-20).",
+                      "disabled": true
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-01-20",
+                      "description": "The date to end the query in the data from, in the format YEAR-MONTH-DAY (e.g., 2025-08-20)."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10",
+                      "description": "The number of results to return."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 07 Mar 2026 13:03:25 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"townCity\": \"RHOSGOCH\",\n        \"price\": 72000\n    },\n    {\n        \"townCity\": \"FERNDALE\",\n        \"price\": 100815.3445945946\n    },\n    {\n        \"townCity\": \"TRIMDON STATION\",\n        \"price\": 102237.0396039604\n    },\n    {\n        \"townCity\": \"PETERLEE\",\n        \"price\": 102467.7873210634\n    },\n    {\n        \"townCity\": \"SHILDON\",\n        \"price\": 104332.90683229813\n    },\n    {\n        \"townCity\": \"FERRYHILL\",\n        \"price\": 105540.12738853504\n    },\n    {\n        \"townCity\": \"NEWCASTLETON\",\n        \"price\": 107500\n    },\n    {\n        \"townCity\": \"NEW TREDEGAR\",\n        \"price\": 109347.5\n    },\n    {\n        \"townCity\": \"TONYPANDY\",\n        \"price\": 121583.1347826087\n    },\n    {\n        \"townCity\": \"PENTRE\",\n        \"price\": 123024.1551724138\n    }\n]"
+            },
+            {
+              "name": "200 Ok (2)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/cheapest-locations?from=2025-01-20&limit=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "cheapest-locations"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "2025-08-20",
+                      "disabled": true
+                    },
+                    {
+                      "key": "from",
+                      "value": "2025-01-20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:14:31 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"townCity\": \"RHOSGOCH\",\n        \"price\": 72000\n    },\n    {\n        \"townCity\": \"FERNDALE\",\n        \"price\": 100815.3445945946\n    },\n    {\n        \"townCity\": \"TRIMDON STATION\",\n        \"price\": 102237.0396039604\n    },\n    {\n        \"townCity\": \"PETERLEE\",\n        \"price\": 102467.7873210634\n    },\n    {\n        \"townCity\": \"SHILDON\",\n        \"price\": 104332.90683229813\n    },\n    {\n        \"townCity\": \"FERRYHILL\",\n        \"price\": 105540.12738853504\n    },\n    {\n        \"townCity\": \"NEWCASTLETON\",\n        \"price\": 107500\n    },\n    {\n        \"townCity\": \"NEW TREDEGAR\",\n        \"price\": 109347.5\n    },\n    {\n        \"townCity\": \"TONYPANDY\",\n        \"price\": 121583.1347826087\n    },\n    {\n        \"townCity\": \"PENTRE\",\n        \"price\": 123024.1551724138\n    }\n]"
+            },
+            {
+              "name": "400 Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/cheapest-locations?from=2027-01-20&limit=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "cheapest-locations"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "2025-08-20",
+                      "disabled": true
+                    },
+                    {
+                      "key": "from",
+                      "value": "2027-01-20"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:14:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: Query returned no results\",\n    \"Error Code\": 400\n}"
+            }
+          ]
+        },
+        {
+          "name": "Average Property Price By Postcode",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MTY4MSwiZXhwIjoxNzcyMDQ1MjgxLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.D1DfM1Y2b9D5G8evsvjHheMHUs2kMhupR_OACe-Wq3w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/analytics/average-price?postcode=LN22 5HD",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "analytics",
+                "average-price"
+              ],
+              "query": [
+                {
+                  "key": "postcode",
+                  "value": "LN22 5HD",
+                  "description": "A valid UK postcode. E.g., LN22 5HD."
+                }
+              ]
+            },
+            "description": "Returns the top (limit) UK locations with the cheapest property data on average from the COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/average-price?postcode=E15 1HR",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "average-price"
+                  ],
+                  "query": [
+                    {
+                      "key": "postcode",
+                      "value": "E15 1HR"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:23:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"postcode\": \"E15 1HR\",\n    \"averagePrice\": 267500,\n    \"numSales\": 4\n}"
+            },
+            {
+              "name": "400 Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/average-price?postcode=LN22 5HD",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "average-price"
+                  ],
+                  "query": [
+                    {
+                      "key": "postcode",
+                      "value": "LN22 5HD"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:24:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: Query Returned No Results\",\n    \"Error Code\": 400\n}"
+            }
+          ]
+        },
+        {
+          "name": "Average Property Price By Property Type and Town/City",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/analytics/average-price?town_city=LONDON&property_type=D",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "analytics",
+                "average-price"
+              ],
+              "query": [
+                {
+                  "key": "town_city",
+                  "value": "LONDON",
+                  "description": "The town/city to find the average property price for (capitalised). E.g., LONDON."
+                },
+                {
+                  "key": "property_type",
+                  "value": "D",
+                  "description": "The property type to find the average property price for. E.g., D for Detatched, S for Semi-Detatched, F for Flat, T for Terraced."
+                }
+              ]
+            },
+            "description": "Returns the average price of UK property of a given type, in a given town/city from the COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/average-price?town_city=LONDON&property_type=D",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "average-price"
+                  ],
+                  "query": [
+                    {
+                      "key": "town_city",
+                      "value": "LONDON"
+                    },
+                    {
+                      "key": "property_type",
+                      "value": "D"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:21:11 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"townCity\": \"LONDON\",\n    \"propertyType\": \"D\",\n    \"averagePrice\": 2267038.9311258276\n}"
+            },
+            {
+              "name": "400 Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/average-price?town_city=LONDON&property_type=K",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "average-price"
+                  ],
+                  "query": [
+                    {
+                      "key": "town_city",
+                      "value": "LONDON"
+                    },
+                    {
+                      "key": "property_type",
+                      "value": "K"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:21:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: Query returned no results\",\n    \"Error Code\": 400\n}"
+            },
+            {
+              "name": "400 Error (2)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/analytics/average-price?town_city=LONDON &property_type=D",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "analytics",
+                    "average-price"
+                  ],
+                  "query": [
+                    {
+                      "key": "town_city",
+                      "value": "LONDON "
+                    },
+                    {
+                      "key": "property_type",
+                      "value": "D"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:22:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: Query returned no results\",\n    \"Error Code\": 400\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All PPD Transactions",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3Mjg4OTI0OSwiZXhwIjoxNzcyODkyODQ5LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.9rXfE5ITV4KtiC6lTvaLcL2PsvsZBUFZPG-RSS9miSc",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/data/all-records?page_number=2&page_size=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "data",
+                "all-records"
+              ],
+              "query": [
+                {
+                  "key": "page_number",
+                  "value": "2",
+                  "description": "The page of transactions we wish to retrieve. E.g., 2."
+                },
+                {
+                  "key": "page_size",
+                  "value": "10",
+                  "description": "The number of transactions we wish to retrieve per page. E.g., 100."
+                }
+              ]
+            },
+            "description": "Returns all PPD transactions from the COMP3011-CWK1 REST API web service. Note that this API has pagination enabled to limit rates."
+          },
+          "response": [
+            {
+              "name": "500 Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/data/all-records?page_number=-1&page_size=100",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "data",
+                    "all-records"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "-1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:22:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+            },
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/data/all-records?page_number=2&page_size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "data",
+                    "all-records"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "2",
+                      "description": "The page of transactions we wish to retrieve. E.g., 2."
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10",
+                      "description": "The number of transactions we wish to retrieve per page. E.g., 100."
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 07 Mar 2026 13:14:26 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"NEWHAM\",\n        \"durationCode\": \"F\",\n        \"id\": 22,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"94\",\n        \"postcode\": \"E7 8JJ\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 487000,\n        \"propertyTypeCode\": \"T\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"KITCHENER ROAD\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-304d-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-01-28\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"REDBRIDGE\",\n        \"durationCode\": \"F\",\n        \"id\": 23,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"739\",\n        \"postcode\": \"IG2 6RJ\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 315000,\n        \"propertyTypeCode\": \"T\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"CRANBROOK ROAD\",\n        \"townCity\": \"ILFORD\",\n        \"transactionUuid\": \"44f406b7-304e-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-10-17\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"WALTHAM FOREST\",\n        \"durationCode\": \"L\",\n        \"id\": 24,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"CAVENDISH COURT\",\n        \"postcode\": \"E4 6DL\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 337000,\n        \"propertyTypeCode\": \"F\",\n        \"recordStatusCode\": null,\n        \"saon\": \"FLAT 7\",\n        \"street\": \"GORDON ROAD\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-304f-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-01-29\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"TOWER HAMLETS\",\n        \"durationCode\": \"L\",\n        \"id\": 25,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"NEW PROVIDENCE WHARF, 1\",\n        \"postcode\": \"E14 9PL\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 538000,\n        \"propertyTypeCode\": \"F\",\n        \"recordStatusCode\": null,\n        \"saon\": \"FLAT 530\",\n        \"street\": \"FAIRMONT AVENUE\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-3050-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-10-15\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"HAVERING\",\n        \"durationCode\": \"L\",\n        \"id\": 26,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"WELLINGTON HOUSE\",\n        \"postcode\": \"RM2 6JD\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 195000,\n        \"propertyTypeCode\": \"F\",\n        \"recordStatusCode\": null,\n        \"saon\": \"FLAT 57\",\n        \"street\": \"KIDMAN CLOSE\",\n        \"townCity\": \"ROMFORD\",\n        \"transactionUuid\": \"44f406b7-3051-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-11-14\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"NEWHAM\",\n        \"durationCode\": \"F\",\n        \"id\": 27,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"473\",\n        \"postcode\": \"E6 2LL\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 1979228,\n        \"propertyTypeCode\": \"O\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"BARKING ROAD\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-3052-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-06-06\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"WALTHAM FOREST\",\n        \"durationCode\": \"F\",\n        \"id\": 28,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"41\",\n        \"postcode\": \"E10 5TL\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 280000,\n        \"propertyTypeCode\": \"O\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"ROBINIA CRESCENT\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-3053-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-02-05\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"HAVERING\",\n        \"durationCode\": \"F\",\n        \"id\": 29,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"UNIT F\",\n        \"postcode\": \"RM7 7PJ\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 825000,\n        \"propertyTypeCode\": \"O\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"CHESHAM CLOSE\",\n        \"townCity\": \"ROMFORD\",\n        \"transactionUuid\": \"44f406b7-3054-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-01-31\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"WALTHAM FOREST\",\n        \"durationCode\": \"F\",\n        \"id\": 30,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"174\",\n        \"postcode\": \"E11 4HS\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 525000,\n        \"propertyTypeCode\": \"T\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"LANGTHORNE ROAD\",\n        \"townCity\": \"LONDON\",\n        \"transactionUuid\": \"44f406b7-3055-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-10-24\"\n    },\n    {\n        \"county\": \"GREATER LONDON\",\n        \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n        \"district\": \"HAVERING\",\n        \"durationCode\": \"F\",\n        \"id\": 31,\n        \"locality\": \"\",\n        \"oldNewCode\": \"N\",\n        \"paon\": \"140\",\n        \"postcode\": \"RM5 2ET\",\n        \"ppdCategoryCode\": \"B\",\n        \"price\": 450000,\n        \"propertyTypeCode\": \"D\",\n        \"recordStatusCode\": null,\n        \"saon\": \"\",\n        \"street\": \"LODGE LANE\",\n        \"townCity\": \"ROMFORD\",\n        \"transactionUuid\": \"44f406b7-3056-1095-e063-4704a8c048d4\",\n        \"transferDate\": \"2025-07-18\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Get Single PPD Transaction",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/data/single-record?transaction_id=2f7f2b43-2631-e08f-e063-4804a8c05a49",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "data",
+                "single-record"
+              ],
+              "query": [
+                {
+                  "key": "transaction_id",
+                  "value": "2f7f2b43-2631-e08f-e063-4804a8c05a49",
+                  "description": "The UUID of the transaction to retrieve."
+                }
+              ]
+            },
+            "description": "Given a transaction UUID, this API returns the full PPD transaction from from the COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "Get Record",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/data/single-record?transaction_id=2f7f2b3-2631-e08f-e063-4804a8c05a49",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "data",
+                    "single-record"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "2f7f2b3-2631-e08f-e063-4804a8c05a49"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:24:51 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"county\": \"LINCOLNSHIRE\",\n    \"createdAt\": \"2026-02-24T22:28:16.420454Z\",\n    \"district\": \"WEST LINDSEY\",\n    \"durationCode\": \"F\",\n    \"id\": 202,\n    \"locality\": \"SOUTH KELSEY\",\n    \"oldNewCode\": \"N\",\n    \"paon\": \"THE NOOK\",\n    \"postcode\": \"LN7 6PQ\",\n    \"ppdCategoryCode\": \"A\",\n    \"price\": 225000,\n    \"propertyTypeCode\": \"D\",\n    \"recordStatusCode\": null,\n    \"saon\": \"\",\n    \"street\": \"BRIGG ROAD\",\n    \"townCity\": \"MARKET RASEN\",\n    \"transactionUuid\": \"2f7f2b43-2631-e08f-e063-4804a8c05a49\",\n    \"transferDate\": \"2025-02-07\"\n}"
+            },
+            {
+              "name": "500 Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/data/single-record?transaction_id=",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "data",
+                    "single-record"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:25:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Message\": \"Error: An unexpected server error occurred - please contact the system administrator\",\n    \"Error Code\": 500\n}"
+            }
+          ]
+        },
+        {
+          "name": "Available PPD Years",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/read/data/available-years-ppd",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "read",
+                "data",
+                "available-years-ppd"
+              ]
+            },
+            "description": "Returns the years from which PPD transaction data has been loaded into the COMP3011-CWK1 REST API web service."
+          },
+          "response": [
+            {
+              "name": "200 Ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/read/data/available-years-ppd",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "read",
+                    "data",
+                    "available-years-ppd"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 25 Feb 2026 18:33:32 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    2025\n]"
+            }
+          ]
+        }
+      ],
+      "description": "Contains all requests to allow a user of the COMP3011-CWK1 REST API web service to perform CRUD operations on PPD data records stored in the system."
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "",
+      "type": "any"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{base_url}}",
+      "type": "any"
+    }
+  ]
+}
