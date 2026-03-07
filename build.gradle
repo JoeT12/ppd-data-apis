@@ -48,7 +48,17 @@ dependencies {
 
 	// Test Dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+	testLogging {
+		events "passed", "skipped", "failed"
+		showStandardStreams = false;
+	}
 }
 
 tasks.named('test') {
