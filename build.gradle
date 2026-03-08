@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.0.2' // Spring Boot version.
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'com.google.cloud.tools.jib' version '3.5.3'
 }
 
 group = 'com.uol.comp3011'
@@ -40,7 +41,11 @@ dependencies {
 	// H2 database + Flyway Dependencies. Flyway used to migrate (and possibly create in-memory) database.
 	// Again, use of these was based on experience with these technologies on placement.
 	implementation 'com.h2database:h2'
-	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-core:12.0.1'
+	implementation 'org.flywaydb:flyway-database-postgresql:12.0.1'
+
+	// SQL Server - for deployment.
+	implementation 'org.postgresql:postgresql'
 
 	// Apache commons library for parsing CSV: (https://commons.apache.org/proper/commons-csv/).
 	// Use based again on personal experience with this tool.
@@ -60,6 +65,22 @@ test {
 		showStandardStreams = false;
 	}
 }
+
+jib {
+	from {
+		image = 'openjdk:25-rc-jdk' // OpenJDK version 25
+	}
+	to {
+		image = System.getenv('JIB_IMAGE_NAME') ?: ""
+		tags = [System.getenv('JIB_IMAGE_TAG') ?: 'latest']
+		auth {
+			username = System.getenv('DOCKER_HUB_USERNAME') ?: ""
+			password = System.getenv('DOCKER_HUB_PASSWORD') ?: ""
+		}
+	}
+
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()

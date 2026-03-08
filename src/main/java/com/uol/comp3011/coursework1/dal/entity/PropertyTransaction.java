@@ -18,13 +18,8 @@ import java.util.UUID;
 public class PropertyTransaction {
 
   /* - @Id Tells JPA that this column is going to be the primary key of the table.
-     - @GeneratedValue(strategy = GenerationType.IDENTITY) Tells JPA that we are automatically generating the id in the database,
-     and therefore that it should not be expecting it when we insert new rows.
   */
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
   @Column(name = "transaction_uuid")
   private UUID transactionUuid;
 
