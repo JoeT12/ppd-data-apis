@@ -1,0 +1,27 @@
+-- =========================
+-- Seed lookup/reference data
+-- =========================
+
+INSERT INTO ref_property_type(code, description) VALUES
+('D','Detached'),
+('S','Semi-detached'),
+('T','Terraced'),
+('F','Flat/Maisonette'),
+('O','Other');
+
+INSERT INTO ref_old_new(code, description) VALUES
+('Y','New build'),
+('N','Established building');
+
+INSERT INTO ref_duration(code, description) VALUES
+('F','Freehold'),
+('L','Leasehold');
+
+INSERT INTO ref_ppd_category(code, description) VALUES
+('A','Standard Price Paid entry'),
+('B','Additional Price Paid entry');
+
+INSERT INTO ref_record_status(code, description) VALUES
+('A','Addition'),
+('C','Change'),
+('D','Delete');
