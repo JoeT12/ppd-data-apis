@@ -2,15 +2,23 @@
 
 ## Overview
 This repository contains a Spring Boot application for performing CRUD operations on UK Price Property Data (PPD) via various REST API endpoints. Created by Joseph Taylor as part of COMP-3011 Coursework
-1 at the University of Leeds.
+1 at the University of Leeds. This application is currently hosted on Microsoft Azure at the endpoint: https://ppd-data-api-app--0000002.jollywater-c3f94696.italynorth.azurecontainerapps.io.
 
 ## Local Setup Instructions:
-To get the project running locally, the only requirement is that the user has Java 25 installed and has added this to their JAVA_HOME environment variable in their system path. 
-Once completed, the user can then simply use the command "./gradlew bootRun" to run the application. This should start the Spring application on port 8080. The user may then use
-POSTMAN or any other API client of their
+To get the project running locally, complete the following steps:
+1. Install Java 25 and add it to the JAVA_HOME environment variable on your system path.
+2. Install gradle.
+3. Use the command "./gradlew bootRun" in this directory to run the application, this will start the server on localhost port 8080.
+4. Study the API documentation, and then use an API client such as POSTMAN to query the applications endpoints.
 
-## Deployed Endpoint
-Alternatively, this application has been deployed on Azure at the endpoint: https://ppd-data-api-app--0000002.jollywater-c3f94696.italynorth.azurecontainerapps.io.
+NOTE: Due to the size of PPD data sets, we have been unable to upload a database into the repository. An empty database will be created on application start-up by
+Spring Boot - however the user must manually upload a yearly PPD data via the admin upload endpoint (/api/v1/write/admin/upload-ppd-year). Such datasets can be found
+at the following link: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads.
+
+## Admin Credentials
+To be able to access the admin endpoints, please use the following credentials to log into the application:
+- username: admin@example.com
+- Password: admin
 
 ## API Documentation:
 For the API documentation, please navigate to the API-DOCUMENTATION/ directory. Within this, there are 3 files:
