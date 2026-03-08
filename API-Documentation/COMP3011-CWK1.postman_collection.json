@@ -34,9 +34,9 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "raw": "{{base_url}}/api/v1/auth/login",
               "host": [
-                "{{baseUrl}}"
+                "{{base_url}}"
               ],
               "path": [
                 "api",
@@ -484,7 +484,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjkyMTI1MSwiZXhwIjoxNzcyOTI0ODUxLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.ADg_es9GlY2LOAegpQJzy9Vvz7eVfm_h0wmqEy-LGfc",
                       "type": "string"
                     }
                   ]
@@ -1098,7 +1098,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3Mjg4ODU2OCwiZXhwIjoxNzcyODkyMTY4LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.J3gUJlzA0G9xyRjNal34W7ne7C-tETFAOZo6UNh23ZU",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjkyOTg3MiwiZXhwIjoxNzcyOTMzNDcyLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.bnvyk4wPe9plvHto0oRC3v3EHfHiWj49Vvn_QDbYnio",
                   "type": "string"
                 }
               ]
@@ -1408,7 +1408,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MTY4MSwiZXhwIjoxNzcyMDQ1MjgxLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.D1DfM1Y2b9D5G8evsvjHheMHUs2kMhupR_OACe-Wq3w",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjkyOTg3MiwiZXhwIjoxNzcyOTMzNDcyLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.bnvyk4wPe9plvHto0oRC3v3EHfHiWj49Vvn_QDbYnio",
                   "type": "string"
                 }
               ]
@@ -1435,7 +1435,7 @@
                 }
               ]
             },
-            "description": "Returns the top (limit) UK locations with the cheapest property data on average from the COMP3011-CWK1 REST API web service."
+            "description": "Returns the average property price in a given postcode area from the COMP3011-CWK1 REST API web service."
           },
           "response": [
             {
@@ -1598,7 +1598,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjkyOTg3MiwiZXhwIjoxNzcyOTMzNDcyLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.bnvyk4wPe9plvHto0oRC3v3EHfHiWj49Vvn_QDbYnio",
                   "type": "string"
                 }
               ]
@@ -2279,7 +2279,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjA0MzY1NywiZXhwIjoxNzcyMDQ3MjU3LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.sO-PgKFI4_47U7jixrjhBR5pMFO7ecESt2iyCu2FFas",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJcInVrLWhvdXNpbmctYXBpXCIiLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTc3MjkyOTg3MiwiZXhwIjoxNzcyOTMzNDcyLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU0VSIl19.bnvyk4wPe9plvHto0oRC3v3EHfHiWj49Vvn_QDbYnio",
                   "type": "string"
                 }
               ]
