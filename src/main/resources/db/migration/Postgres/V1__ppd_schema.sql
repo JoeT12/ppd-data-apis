@@ -2,7 +2,7 @@
 -- Reviewed and Edited by Joseph Taylor (ed20jwt).
 
 -- =========================
--- HM Land Registry PPD schema (SQL Server)
+-- HM Land Registry PPD schema (PostgreSQL)
 -- =========================
 
 -- -------------------------
@@ -37,9 +37,8 @@ CREATE TABLE ref_record_status (
 -- Typed transactions table
 -- -------------------------
 CREATE TABLE ppd_transaction (
-  id BIGINT IDENTITY(1,1) PRIMARY KEY,
 
-  transaction_uuid UNIQUEIDENTIFIER NOT NULL,
+  transaction_uuid UUID PRIMARY KEY,
 
   price INT NOT NULL CHECK (price > 0),
   transfer_date DATE NOT NULL,
@@ -61,9 +60,7 @@ CREATE TABLE ppd_transaction (
   ppd_category_code CHAR(1) NOT NULL,
   record_status_code CHAR(1),
 
-  created_at DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
-
-  CONSTRAINT uq_ppd_transaction_uuid UNIQUE (transaction_uuid),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   CONSTRAINT fk_ppd_txn_property_type
     FOREIGN KEY (property_type_code) REFERENCES ref_property_type(code),

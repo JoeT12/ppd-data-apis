@@ -41,6 +41,6 @@ public interface PropertyTransactionRepository extends JpaRepository<PropertyTra
   AvgPrice averagePriceByPropertyType(String townCity, Character propertyType);
 
   @Query(
-      "SELECT DISTINCT FUNCTION('YEAR', p.transferDate) FROM PropertyTransaction p ORDER BY FUNCTION('YEAR', p.transferDate)")
+      "SELECT DISTINCT YEAR(p.transferDate) FROM PropertyTransaction p ORDER BY YEAR(p.transferDate)")
   List<Integer> getAvailableYears();
 }
