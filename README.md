@@ -21,7 +21,7 @@ To be able to access the admin endpoints, please use the following credentials t
 - Password: admin
 
 ## API Documentation:
-For the API documentation, please navigate to the API-DOCUMENTATION/ directory. Within this, there are 3 files:
+For the API documentation, please navigate to the API-Documentation/ directory. Within this, there are 3 files:
 1. COMP3011-CWK1.postman_collection.json: The exported POSTMAN collection for the application which can be imported into POSTMAN for quick setup.
 2. API Documentation.pdf: The ChatGPT generated API documentation, based of my manually created POSTMAN collection.
 Alternatively, all API documentation has been published to the following endpoint, for easy access: https://documenter.getpostman.com/view/51986844/2sBXcGEzyf#f608d97f-0cca-4186-9bd5-c31bc407337f.
